@@ -68,7 +68,7 @@ def qSortByLen(_list):
     return tempLower+tempEquals+tempHigher
 
 def queenBeatsFigure(queenLocated, figureLocated):
-    print(queenLocated, figureLocated)
+    #print(queenLocated, figureLocated)
     if (queenLocated.Height == figureLocated.Height or
         ord(queenLocated.Width) == ord(figureLocated.Width) or
         ((ord(queenLocated.Width) - ord(figureLocated.Width))/(queenLocated.Height - figureLocated.Height) in [-1, 1])):
