@@ -1,6 +1,6 @@
-max = 1000
-arg2 = []
 def sort(arg):
+    max = 1000
+    rusult = []
     for i in range(len(arg)):
         for j in range(len(arg)):
             if arg[j] <= min:

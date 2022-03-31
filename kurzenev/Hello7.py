@@ -1,6 +1,6 @@
-i = 0
-N = 1
 def shet(arg):
+    N = 1
+    i = 0
     for i in range(len(arg)):
         for j in range(len(arg)):
             if arg[i] == arg[j]:
