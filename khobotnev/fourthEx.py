@@ -86,38 +86,19 @@ def mayonnaise(fun):
         fun(what)
     return mfunc
 
-def vegitables(fun):
-    def mfunc(what):
+def vegetables(fun):
+    def vfunc(what):
         print("tomatoes")
         fun(what)
         print("salad")
-    return mfunc
+    return vfunc
 
 
 @bread
 @mayonnaise
-@vegitables
+@vegetables
 def sandwich(what):
     print(what)
-
-class DataBase:
-    def __init__(self, Path):
-        self.Path = Path
-        self.file = open(Path)
-        pass
-    def __enter__(self):
-        self.file = open(self.Path)
-        pass
-    def __exit__(self, *args):
-        self.file.close()
-        pass
-
-    def get(self, what):
-
-        pass
-    def set(self, where, what):
-        
-        pass
 
 
 # main()
