@@ -97,9 +97,36 @@ def mayonnaise(items):
 
 # sandwich("ham")
 
-with open("db.json", "r") as f:
-    file = json.load(f)
-    print(file.list())
-#     file.set("Reed", "Alice")
-#     print(file.get("Reed"))
-# f.close()
+class DB:
+
+
+    def __init__(self, file_name):
+        self.file_name = file_name
+        self.db = {}
+        
+    def __enter__(self):
+        with open(self.file_name) as f:
+            self.db = json.load(f)
+        return self
+
+    def list(self):
+        return self.db.keys()
+
+    def get(self, key):
+
+        return self.db[key]
+
+    def set(self, key, value):
+        self.db[key] = value
+
+    def __exit__(self, *args):
+        with open(self.file_name, "w") as f:
+            json.dump(self.db, f)
+        
+
+with DB("db.json") as db:
+    db.set("key", "value")
+
+
+with DB("db.json") as db:
+    print(db.get("key"))
