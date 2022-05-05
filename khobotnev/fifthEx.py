@@ -45,19 +45,3 @@ def Fibb():
         tmp = fst
         fst, snd = snd, fst+snd
         yield tmp
-
-
-import time
-@CACHE
-def fun(a, b, c):
-    time.sleep(2)
-    return a+b+c
-
-a = partial(fun, 10)
-b = partial(a, 15)
-print(b(19))
-
-
-print(fun(5,4,2))
-print(fun(5,4,2))
-print(fun(5,42,0))
