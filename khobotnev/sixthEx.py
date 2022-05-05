@@ -10,9 +10,7 @@ def f(x):
 def definitIntegral(func, lower, upper, numOfSegm) -> float:
     step = ((upper-lower)*1.) / numOfSegm
     x = np.arange(lower, upper, step)
-    print(x)
     x = np.array(x+(step*1.)/2)
-    print(x)
     x = np.array(func(x))
     z = np.array(step*x)
     return z.sum()
