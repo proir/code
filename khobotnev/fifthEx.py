@@ -16,19 +16,28 @@ class DefaultDict:
 
 def CACHE(fun):
     CachedDict = {}
-    def func(key):
-        CachedDict[key] = fun(key)
-        return CachedDict[key]
+    def func(*args):
+        if CachedDict.get(args)==None:
+            CachedDict[args] = fun(*args)
+        return CachedDict[args]
     return func
 
-def partial(func, /, *args, **keywords):
-    def newfunc(*fargs, **fkeywords):
-        newkeywords = {**keywords, **fkeywords}
-        return func(*args, *fargs, **newkeywords)
+def partial(func, *args):
+    def newfunc(*fargs):
+        return func(*args, *fargs)
     newfunc.func = func
     newfunc.args = args
-    newfunc.keywords = keywords
     return newfunc
+
+
+# def partial(func, /, *args, **keywords):
+#     def newfunc(*fargs, **fkeywords):
+#         newkeywords = {**keywords, **fkeywords}
+#         return func(*args, *fargs, **newkeywords)
+#     newfunc.func = func
+#     newfunc.args = args
+#     newfunc.keywords = keywords
+#     return newfunc
 
 def Fibb():
     fst, snd = 1, 1
@@ -36,7 +45,3 @@ def Fibb():
         tmp = fst
         fst, snd = snd, fst+snd
         yield tmp
-
-x = Fibb()
-for _ in range(0,20):
-    print(next(x))
